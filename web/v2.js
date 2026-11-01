@@ -72,3 +72,7 @@
   tr.addEventListener('touchend',function(e){ if(sx===null) return; var dx=e.changedTouches[0].clientX-sx; if(Math.abs(dx)>40) go(cur+(dx<0?1:-1)); sx=null; });
   go(0);
 })();
+/* brand casing in tab titles */
+(function(){ function fix(){ if(/PAYCE/.test(document.title)) document.title=document.title.replace(/PAYCE/g,'Payce'); }
+  fix(); var t=document.querySelector('title'); if(t&&'MutationObserver' in window) new MutationObserver(fix).observe(t,{childList:true,characterData:true,subtree:true});
+  addEventListener('hashchange',function(){ setTimeout(fix,0); }); })();
