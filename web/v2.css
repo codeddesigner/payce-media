@@ -31,7 +31,12 @@ body.at-hero .top .navsw{background:rgba(255,111,188,.16)}
   .hero-pic img{object-position:50% 50%}
   .hero-dl{left:16px;right:16px;bottom:24px;justify-content:center}
 }
-@media (prefers-reduced-motion:reduce){.hero-logo,.hero-pic,.hero-dl{animation:none}}
+.hero-sub{position:absolute;z-index:2;right:var(--pad);bottom:clamp(36px,8vh,72px);max-width:min(400px,34vw);margin:0;color:#fff;opacity:.9;font-size:clamp(15px,1.25vw,19px);line-height:1.45;text-align:right;animation:hlIn .9s var(--ease) both .5s}
+@media (max-width:860px){
+  .hero-sub{left:16px;right:16px;bottom:100px;max-width:none;text-align:center;font-size:15px}
+  .hero-pic{height:min(calc(100svh - var(--lt) - var(--lw)*.16 - 210px),130vw)!important}
+}
+@media (prefers-reduced-motion:reduce){.hero-logo,.hero-pic,.hero-dl,.hero-sub{animation:none}}
 
 .sl-ghost,.sl-solid{display:inline-flex;align-items:center;justify-content:center;gap:10px;height:clamp(46px,3.6vw,58px);padding:0 clamp(20px,1.8vw,30px);border-radius:999px;font-size:clamp(15px,1.15vw,19px);font-weight:500;white-space:nowrap;transition:transform .2s,background .6s,color .6s,border-color .6s;cursor:pointer}
 .sl-ghost{border:1.5px solid currentColor;justify-self:start}
