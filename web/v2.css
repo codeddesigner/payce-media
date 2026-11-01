@@ -138,3 +138,52 @@ body.at-hero .top .navsw{background:rgba(255,111,188,.16)}
 .fc-dots button.on{width:30px;background:#fff}
 @media (max-width:860px){.fc{height:380vh}.fc-deck{width:88vw;aspect-ratio:4/5}.fc-h{left:16px;top:84px}}
 @media (prefers-reduced-motion:reduce){.fc-card,.fc-card.gone,.fc-t .fw{transition:none}}
+
+/* ---------- how it works: tabs + card carousel ---------- */
+.hw{position:relative;background:#3A0B24;color:#FFE3F1;padding:clamp(100px,14vh,150px) 0 clamp(80px,12vh,130px);overflow:hidden}
+.hw-h{text-align:center;font-size:clamp(36px,4.6vw,76px);line-height:1.04;letter-spacing:-.035em;font-weight:500;padding:0 var(--pad)}
+.hw-tabs{display:flex;justify-content:center;flex-wrap:wrap;gap:10px;margin:clamp(26px,4vh,40px) var(--pad) clamp(36px,6vh,60px)}
+.hw-tabs button{height:clamp(42px,3.4vw,52px);padding:0 clamp(18px,1.8vw,28px);border-radius:999px;background:#5A1B3C;color:#E9B8D2;font-size:clamp(14px,1.05vw,17px);font-weight:600;transition:background .35s,color .35s,transform .2s}
+.hw-tabs button:hover{background:#6B2449;color:#fff}
+.hw-tabs button.on{background:#FFC2E3;color:#3A0B24}
+.hw-vp{position:relative}
+.hw-track{display:flex;gap:clamp(14px,1.6vw,24px);padding:0 calc(50vw - var(--cw)/2);--cw:min(880px,72vw);transform:translateX(calc(var(--i,0) * -1 * (var(--cw) + clamp(14px,1.6vw,24px))));transition:transform .8s cubic-bezier(.65,0,.2,1);touch-action:pan-y}
+.hw-card{flex:none;width:var(--cw);height:clamp(380px,46vh,470px);display:grid;grid-template-columns:1fr 1fr;border-radius:clamp(26px,2.6vw,40px);overflow:hidden;background:var(--c);color:var(--ink2);opacity:.55;transform:scale(.94);transition:opacity .6s,transform .8s cubic-bezier(.65,0,.2,1);cursor:pointer}
+.hw-card.on{opacity:1;transform:none;cursor:default}
+.hw-txt{display:flex;flex-direction:column;padding:clamp(26px,3vw,46px)}
+.hw-txt h3{font-size:clamp(26px,2.4vw,40px);line-height:1.05;letter-spacing:-.03em;font-weight:600;margin-bottom:16px}
+.hw-txt p{font-size:clamp(15px,1.15vw,18px);line-height:1.55;opacity:.8;max-width:30em}
+.hw-txt a{margin-top:auto;align-self:flex-start;display:inline-flex;align-items:center;height:50px;padding:0 26px;border-radius:999px;background:var(--ink2);color:var(--c);font-weight:600;font-size:15px;transition:transform .2s}
+.hw-txt a:hover{transform:translateY(-2px)}
+.hw-img{position:relative;overflow:hidden;background:var(--c2)}
+.hw-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hw-img.hwp img{inset:auto;left:50%;top:9%;width:72%;height:auto;transform:translateX(-50%) rotate(-3deg);border-radius:22px;box-shadow:0 24px 60px rgba(0,0,0,.25);object-fit:contain}
+.hw-card.on .hw-img img{animation:hwIn .9s var(--ease) both .15s}
+.hw-card.on .hw-img.hwp img{animation:hwIn2 .9s var(--ease) both .15s}
+@keyframes hwIn{from{transform:scale(1.08)}}
+@keyframes hwIn2{from{transform:translateX(-50%) translateY(40px) rotate(2deg);opacity:0}}
+.hw-nav{display:flex;justify-content:center;gap:10px;margin-top:28px}
+.hw-nav button{width:52px;height:52px;border-radius:50%;background:#5A1B3C;color:#FFC2E3;display:grid;place-items:center;transition:background .3s}
+.hw-nav button:hover{background:#FFC2E3;color:#3A0B24}
+.hw-nav svg{width:22px;height:22px}
+.hw-nav .prev svg{transform:rotate(180deg)}
+@media (max-width:860px){
+  .hw-track{--cw:86vw}
+  .hw-card{grid-template-columns:1fr;grid-template-rows:auto 1fr;height:auto;min-height:560px}
+  .hw-img{min-height:280px;order:-1}
+  .hw-txt a{margin-top:22px}
+  .hw-tabs{gap:8px}
+}
+
+/* ---------- FAQ: pastel pills ---------- */
+.faqs-l{background:#FBF5EA;color:#3A0B24}
+.faqs-l .h2{font-weight:500}
+.faqs-l .acc{display:flex;flex-direction:column;gap:12px}
+.faqs-l .acc details{background:#FFD3EA;color:#3A0B24;border-radius:22px;padding:0 26px;border:1.5px solid rgba(58,11,36,.08)}
+.faqs-l .acc details:not(.on):hover{background:#FFC2E3}
+.faqs-l .acc:not(.js) details[open],.faqs-l .acc details.on{background:#EEF8C8;border-color:rgba(58,11,36,.12)}
+.faqs-l .acc summary{padding:22px 0;font-size:clamp(16px,1.3vw,20px)}
+.faqs-l .acc summary::after{width:26px;height:26px;margin-right:0;border:1.6px solid currentColor;background:linear-gradient(currentColor,currentColor) center/11px 1.6px no-repeat,linear-gradient(currentColor,currentColor) center/1.6px 11px no-repeat}
+.faqs-l .acc:not(.js) details[open] summary::after,.faqs-l .acc details.on summary::after{background-size:11px 1.6px,1.6px 0;box-shadow:none}
+.faqs-l .acc details:not(.on) summary:hover::after{box-shadow:none}
+.faqs-l .acc details p{padding-bottom:24px;opacity:.75}
