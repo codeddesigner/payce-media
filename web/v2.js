@@ -2,65 +2,14 @@
   var $=function(s,r){return (r||document).querySelector(s)}, $$=function(s,r){return [].slice.call((r||document).querySelectorAll(s))};
   var still=matchMedia('(prefers-reduced-motion:reduce)').matches, root=document.documentElement;
   if(still) root.classList.add('still');
-  try{ if(sessionStorage.getItem('pIntro')) root.classList.add('seen'); else sessionStorage.setItem('pIntro','1'); }catch(e){}
-  var intro=$('.intro'); if(intro) setTimeout(function(){ intro.style.display='none'; },2200);
-
-  /* hero video */
-  var hv=$('.hero-vid');
-  if(hv&&hv.dataset.wide){ hv.src=matchMedia('(max-width:860px)').matches?hv.dataset.tall:hv.dataset.wide;
-    if(still) hv.removeAttribute('autoplay'); else { var p=hv.play(); if(p&&p.catch) p.catch(function(){}); } }
-
-  /* slider */
-  var sl=$('.sl'), cards=$$('.sl-card'), heads=$$('.sl-h'), bars=$$('.sl-prog button'), N=cards.length, cur=0, t0=0, DUR=5200, paused=false, raf=0, elapsed=0;
-  function layout(){
-    var vw=innerWidth, mob=vw<=860;
-    cards.forEach(function(c,i){
-      var d=((i-cur)%N+N)%N; if(d>N/2) d-=N;
-      var w=c.offsetWidth, x=0, sc=1, op=1, side=false;
-      if(d===0){ x=0; }
-      else if(Math.abs(d)===1){ side=true; sc=mob?.55:.62; x=d*(vw/2 - (mob?w*.08:w*.12)); }
-      else { side=true; sc=.5; op=0; x=(d>0?1:-1)*(vw/2+w); }
-      c.style.setProperty('--x',x+'px'); c.style.setProperty('--sc',sc); c.style.setProperty('--op',op);
-      c.style.zIndex=d===0?3:2; c.classList.toggle('side',side);
-      c.setAttribute('aria-hidden',d!==0);
-    });
-  }
-  function go(i,user){
-    cur=(i+N)%N; elapsed=0; t0=performance.now();
-    if(sl){ sl.dataset.s=cur; sl.dataset.tone=cur===0?'dark':'light'; try{ dispatchEvent(new Event('scroll')); }catch(e){} }
-    heads.forEach(function(h,j){ h.classList.toggle('on',j===cur); });
-    bars.forEach(function(b,j){ b.classList.toggle('on',j===cur); b.classList.toggle('done',j<cur); b.setAttribute('aria-selected',j===cur); var ii=$('i',b); ii.style.setProperty('--p',0); });
-    layout();
-    if(user) paused=false;
-  }
-  function tick(t){
-    raf=requestAnimationFrame(tick);
-    if(paused||document.hidden||!inView){ t0=t-elapsed; return; }
-    elapsed=t-t0; var p=Math.min(1,elapsed/DUR);
-    var bi=bars[cur]&&$('i',bars[cur]); if(bi) bi.style.setProperty('--p',p);
-    if(p>=1) go(cur+1);
-  }
-  var inView=true;
-  if(sl){
-    bars.forEach(function(b,j){ b.addEventListener('click',function(){ go(j,true); }); });
-    cards.forEach(function(c,i){ c.addEventListener('click',function(){ if(i!==cur) go(i,true); }); });
-    sl.addEventListener('mouseenter',function(){ paused=true; }); sl.addEventListener('mouseleave',function(){ paused=false; });
-    var sx=null; sl.addEventListener('touchstart',function(e){ sx=e.touches[0].clientX; },{passive:true});
-    sl.addEventListener('touchend',function(e){ if(sx===null) return; var dx=e.changedTouches[0].clientX-sx; if(Math.abs(dx)>40) go(cur+(dx<0?1:-1),true); sx=null; });
-    sl.addEventListener('keydown',function(e){ if(e.key==='ArrowRight') go(cur+1,true); if(e.key==='ArrowLeft') go(cur-1,true); });
-    if('IntersectionObserver' in window) new IntersectionObserver(function(es){ inView=es[0].isIntersecting; }).observe(sl);
-    addEventListener('resize',layout);
-    go(0); if(!still) raf=requestAnimationFrame(tick); else paused=true;
-  }
 
   /* header state over the hero */
-  var menu=document.getElementById('menu');
+  var sl=$('.hero2'), menu=document.getElementById('menu');
   function up(){ var v=$('.view[data-v=users]'), users=v&&!v.hidden;
     document.body.classList.toggle('at-hero', !!(users && sl && scrollY < sl.offsetHeight-80 && !(menu&&menu.classList.contains('open'))));
-    if(sl){ document.body.style.setProperty('--sl-ink',getComputedStyle(sl).getPropertyValue('--sl-fg')); document.body.style.setProperty('--sl-bg',getComputedStyle(sl).getPropertyValue('--sl-bg')); } }
+ }
   addEventListener('scroll',up,{passive:true}); addEventListener('resize',up); addEventListener('hashchange',function(){ setTimeout(up,50); });
   document.addEventListener('click',function(){ setTimeout(up,60); }); up();
-  if(sl) new MutationObserver(up).observe(sl,{attributes:true,attributeFilter:['data-s']});
 
   /* tap-to-walk game */
   var ov=$('.g-over'); if(!ov) return;
