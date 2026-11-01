@@ -111,3 +111,30 @@ body.at-hero .top .navsw{background:rgba(255,111,188,.16)}
   .g-card{border-radius:26px;padding:10px}.g-track{border-radius:18px}.g-go{border-radius:18px}
 }
 @media (prefers-reduced-motion:reduce){.stk,.spark,.g-track i{animation:none}}
+
+/* ---------- how it works: flashcard deck ---------- */
+.fc{position:relative;height:420vh;background:#F6D9E6}
+.fc-st{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;display:grid;place-items:center}
+.fc-bg{position:absolute;inset:-4%;background:#E9B9CF url("../img/how-bg.webp") center/cover no-repeat;transform:scale(1.05)}
+.fc-bg::after{content:"";position:absolute;inset:0;background:radial-gradient(80% 70% at 50% 50%,rgba(255,255,255,.12),transparent 70%)}
+.fc-h{position:absolute;left:var(--pad);top:clamp(92px,12vh,124px);z-index:2;font-size:clamp(15px,1.1vw,18px);font-weight:700;letter-spacing:.02em;color:#3A0B24;background:rgba(255,255,255,.55);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);padding:9px 16px;border-radius:999px}
+.fc-deck{position:relative;width:min(760px,86vw);aspect-ratio:3/2;perspective:1600px}
+.fc-card{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:space-between;background:#fff;border-radius:clamp(28px,3.4vw,52px);padding:clamp(28px,4.6vw,64px) clamp(28px,4.8vw,66px) clamp(24px,3.4vw,46px);
+  box-shadow:0 30px 80px rgba(70,10,40,.18),0 2px 0 rgba(255,255,255,.6) inset;transform-origin:50% 120%;
+  transform:translateY(calc(var(--d,0)*22px)) scale(calc(1 - var(--d,0)*.05)) rotate(calc(var(--d,0)*1.2deg));opacity:calc(1 - var(--d,0)*.28);
+  transition:transform .75s cubic-bezier(.2,.9,.25,1),opacity .5s;will-change:transform}
+.fc-card.gone{transform:translate(-62vw,-8vh) rotate(-16deg);opacity:0;transition:transform .7s cubic-bezier(.6,0,.3,1),opacity .5s .15s}
+.fc-card.hid{opacity:0}
+.fc-t{font-size:clamp(26px,3.6vw,54px);line-height:1.12;letter-spacing:-.028em;font-weight:500;color:#1A0A12;margin:0}
+.fc-t .fw{color:#B9B2B6;transition:color .35s ease}
+.fc-card.on .fc-t .fw{color:#1A0A12}
+.fc-card.on .fc-t .fw.dim{color:#8E8589}
+.fc-foot{display:flex;align-items:center;justify-content:space-between}
+.fc-logo{display:block;height:clamp(22px,2.2vw,32px);aspect-ratio:480/105;background:#1A0A12;-webkit-mask:var(--logo) left center/contain no-repeat;mask:var(--logo) left center/contain no-repeat}
+.fc-mark{display:flex;align-items:center;gap:12px;font-size:clamp(13px,1vw,15px);font-weight:700;color:#8E8589;font-variant-numeric:tabular-nums}
+.fc-mark img{width:clamp(30px,2.6vw,40px);height:auto}
+.fc-dots{position:absolute;bottom:clamp(24px,5vh,48px);left:50%;transform:translateX(-50%);display:flex;gap:8px;z-index:2}
+.fc-dots button{width:10px;height:10px;border-radius:999px;background:rgba(255,255,255,.6);transition:width .35s var(--ease),background .35s}
+.fc-dots button.on{width:30px;background:#fff}
+@media (max-width:860px){.fc{height:380vh}.fc-deck{width:88vw;aspect-ratio:4/5}.fc-h{left:16px;top:84px}}
+@media (prefers-reduced-motion:reduce){.fc-card,.fc-card.gone,.fc-t .fw{transition:none}}

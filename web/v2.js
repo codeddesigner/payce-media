@@ -42,3 +42,18 @@
   tap.addEventListener('click',function(e){ e.preventDefault(); });
   document.addEventListener('keydown',function(e){ if(e.key==='Escape'&&!ov.hidden) close(); });
 })();
+/* how it works: flashcards */
+(function(){
+  var sec=document.querySelector('.fc'); if(!sec) return;
+  var cards=[].slice.call(sec.querySelectorAll('.fc-card')), dots=[].slice.call(sec.querySelectorAll('.fc-dots button')), N=cards.length, cur=-1;
+  cards.forEach(function(c){ var t=c.querySelector('.fc-t'), dimFrom=+(t.dataset.dim||999), i=0, html='';
+    t.textContent.trim().split(/\s+/).forEach(function(w){ html+='<span class="fw'+(i>=dimFrom?' dim':'')+'" style="transition-delay:'+(0.18+i*0.045).toFixed(3)+'s">'+w+'</span> '; i++; });
+    t.innerHTML=html; });
+  function set(k){ if(k===cur) return; cur=k;
+    cards.forEach(function(c,i){ var d=i-k; c.classList.toggle('gone',d<0); c.classList.toggle('on',d===0); c.classList.toggle('hid',d>2);
+      c.style.setProperty('--d',Math.max(0,d)); c.style.zIndex=N-i; c.setAttribute('aria-hidden',d!==0); });
+    dots.forEach(function(b,i){ b.classList.toggle('on',i===k); }); }
+  function onS(){ var r=sec.getBoundingClientRect(), h=sec.offsetHeight-innerHeight, p=h>0?Math.min(1,Math.max(0,-r.top/h)):0; set(Math.min(N-1,Math.floor(p*N*0.999))); }
+  dots.forEach(function(b,i){ b.addEventListener('click',function(){ var h=sec.offsetHeight-innerHeight; scrollTo({top:sec.offsetTop+h*(i+.3)/N,behavior:'smooth'}); }); });
+  addEventListener('scroll',onS,{passive:true}); addEventListener('resize',onS); set(0); onS();
+})();
