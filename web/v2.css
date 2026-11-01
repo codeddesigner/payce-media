@@ -1,4 +1,4 @@
-:root{--font:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text","SF Pro",Inter,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+:root{--font:ui-rounded,"SF Pro Rounded","SF Pro Display",Nunito,system-ui,-apple-system,"Segoe UI",sans-serif;
   --round:ui-rounded,"SF Pro Rounded",Nunito,var(--font);
   --hb:#521536;--hp:#FF6FBC;--lw:calc(100vw - 2*var(--pad));--lt:clamp(84px,10.5vh,116px);
   --logo:url("https://cdn.jsdelivr.net/gh/codeddesigner/payce-media@bfc11cb74af1322dbe676a15c8dd795e6a2894dd/img/brand/payce-logo-pink.svg")}
