@@ -1,14 +1,14 @@
 :root{--font:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text","SF Pro",Inter,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
   --round:ui-rounded,"SF Pro Rounded",Nunito,var(--font);
-  --hb:#441E35;--hp:#DA81B8;--lw:calc(100vw - 2*var(--pad));--lt:clamp(84px,10.5vh,116px);
+  --hb:#521536;--hp:#FF6FBC;--lw:calc(100vw - 2*var(--pad));--lt:clamp(84px,10.5vh,116px);
   --logo:url("https://cdn.jsdelivr.net/gh/codeddesigner/payce-media@bfc11cb74af1322dbe676a15c8dd795e6a2894dd/img/brand/payce-logo-pink.svg")}
 body.at-hero .top .logo{opacity:0;pointer-events:none}
 .top .logo{transition:opacity .3s}
-body.at-hero .top .pillbtn,body.at-hero .top .menubtn{background:#DA81B8;color:#441E35}
-body.at-hero .top .navsw{background:rgba(218,129,184,.16)}
+body.at-hero .top .pillbtn,body.at-hero .top .menubtn{background:#FF6FBC;color:#521536}
+body.at-hero .top .navsw{background:rgba(255,111,188,.16)}
 
 /* ---------- hero v2: giant wordmark + tilted photo ---------- */
-.hero2{--hb:#441E35;--hp:#DA81B8;--lw:calc(100vw - 2*var(--pad));--lt:clamp(86px,11vh,118px);
+.hero2{--hb:#521536;--hp:#FF6FBC;--lw:calc(100vw - 2*var(--pad));--lt:clamp(86px,11vh,118px);
   position:relative;height:100vh;height:100svh;min-height:600px;background:var(--hb);color:#fff;overflow:hidden}
 .hero-logo{position:absolute;left:var(--pad);top:var(--lt);width:var(--lw);height:auto;aspect-ratio:480/105;display:block;animation:hlIn 1s var(--ease) both}
 @keyframes hlIn{from{opacity:0;transform:translateY(40px)}}
@@ -22,8 +22,8 @@ body.at-hero .top .navsw{background:rgba(218,129,184,.16)}
 .hero-dl svg{width:clamp(20px,1.8vw,28px);height:clamp(20px,1.8vw,28px);fill:currentColor;flex:none}
 .hero-dl i{width:1.5px;align-self:stretch;margin:clamp(20px,2.1vw,32px) 0;background:currentColor;opacity:.4}
 body.at-hero .top .logo{opacity:0;pointer-events:none}
-body.at-hero .top .pillbtn,body.at-hero .top .menubtn{background:#DA81B8;color:#441E35}
-body.at-hero .top .navsw{background:rgba(218,129,184,.16)}
+body.at-hero .top .pillbtn,body.at-hero .top .menubtn{background:#FF6FBC;color:#521536}
+body.at-hero .top .navsw{background:rgba(255,111,188,.16)}
 .top .logo{transition:opacity .3s}
 @media (max-width:860px){
   .hero2{--lt:84px;--pad:16px}
@@ -66,18 +66,18 @@ body.at-hero .top .navsw{background:rgba(218,129,184,.16)}
 .game-p{max-width:30em;margin:28px auto 0;font-size:clamp(16px,1.3vw,21px);line-height:1.4}
 .g-store{margin-top:30px;display:flex;justify-content:center}
 .g-store .sl-solid,.end .sl-solid{--sl-ink:#22091A;--sl-bg:#fff}
-.g-over{position:fixed;inset:0;z-index:90;background:#441E35;color:#fff;display:grid;place-items:center;text-align:center;padding:24px;overflow:hidden}
+.g-over{position:fixed;inset:0;z-index:90;background:#521536;color:#fff;display:grid;place-items:center;text-align:center;padding:24px;overflow:hidden}
 .g-over[hidden]{display:none}
 .g-scr{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;gap:18px}
 .g-scr[hidden]{display:none}
 .puff.big{font-size:clamp(64px,12vw,200px)}
 .g-sub{font-size:clamp(17px,1.5vw,24px);opacity:.85}
-.g-over .sl-solid,.g-over .sl-ghost{--sl-ink:#DA81B8;--sl-bg:#441E35}
+.g-over .sl-solid,.g-over .sl-ghost{--sl-ink:#FF6FBC;--sl-bg:#521536}
 .g-over .sl-ghost{color:#fff}
 .g-time{font-size:18px;opacity:.8;font-variant-numeric:tabular-nums}
-.g-count{font-family:var(--round);font-weight:900;font-size:clamp(110px,18vw,280px);line-height:.9;color:#DA81B8;font-variant-numeric:tabular-nums}
-.g-tap{width:clamp(150px,18vw,220px);aspect-ratio:1;border-radius:50%;background:#DA81B8;color:#441E35;font-size:clamp(24px,2.4vw,34px);font-weight:700;box-shadow:0 12px 0 #9A4B7E,0 30px 60px rgba(0,0,0,.35);transition:transform .06s,box-shadow .06s;touch-action:manipulation;user-select:none;-webkit-user-select:none}
-.g-tap:active,.g-tap.hit{transform:translateY(8px);box-shadow:0 4px 0 #9A4B7E,0 16px 30px rgba(0,0,0,.35)}
+.g-count{font-family:var(--round);font-weight:900;font-size:clamp(110px,18vw,280px);line-height:.9;color:#FF6FBC;font-variant-numeric:tabular-nums}
+.g-tap{width:clamp(150px,18vw,220px);aspect-ratio:1;border-radius:50%;background:#FF6FBC;color:#521536;font-size:clamp(24px,2.4vw,34px);font-weight:700;box-shadow:0 12px 0 #B8357F,0 30px 60px rgba(0,0,0,.35);transition:transform .06s,box-shadow .06s;touch-action:manipulation;user-select:none;-webkit-user-select:none}
+.g-tap:active,.g-tap.hit{transform:translateY(8px);box-shadow:0 4px 0 #B8357F,0 16px 30px rgba(0,0,0,.35)}
 .g-res{font-size:clamp(46px,8vw,130px);font-weight:600;letter-spacing:-.04em;line-height:1}
 .g-btns{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:10px}
 .g-x{position:absolute;top:20px;right:20px;width:48px;height:48px;border-radius:50%;background:rgba(255,255,255,.12);display:grid;place-items:center;z-index:3}
