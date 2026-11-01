@@ -28,7 +28,7 @@ body.at-hero .top .navsw{background:rgba(218,129,184,.16)}
 @media (max-width:860px){
   .hero2{--lt:84px;--pad:16px}
   .hero-pic{--cw:calc(100vw - 40px);left:50%;top:calc(var(--lt) + var(--lw)*.16);aspect-ratio:auto;height:min(calc(100svh - var(--lt) - var(--lw)*.16 - 130px),130vw);transform:rotate(-3deg)}
-  .hero-pic img{object-position:50% 40%}
+  .hero-pic img{object-position:50% 50%}
   .hero-dl{left:16px;right:16px;bottom:24px;justify-content:center}
 }
 @media (prefers-reduced-motion:reduce){.hero-logo,.hero-pic,.hero-dl{animation:none}}
