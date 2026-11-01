@@ -31,9 +31,10 @@ body.at-hero .top .navsw{background:rgba(255,111,188,.16)}
   .hero-pic img{object-position:50% 50%}
   .hero-dl{left:16px;right:16px;bottom:24px;justify-content:center}
 }
-.hero-sub{position:absolute;z-index:2;right:var(--pad);bottom:clamp(36px,8vh,72px);max-width:min(400px,34vw);margin:0;color:#fff;opacity:.9;font-size:clamp(15px,1.25vw,19px);line-height:1.45;text-align:right;animation:hlIn .9s var(--ease) both .5s}
+.hero-sub{position:absolute;z-index:2;right:var(--pad);bottom:clamp(36px,8vh,72px);max-width:none;white-space:nowrap;margin:0;color:#fff;opacity:.9;font-size:clamp(14px,1.2vw,19px);line-height:1.45;text-align:right;animation:hlIn .9s var(--ease) both .5s}
 @media (max-width:860px){
-  .hero-sub{left:16px;right:16px;bottom:100px;max-width:none;text-align:center;font-size:15px}
+  .hero-sub{left:16px;right:16px;bottom:100px;max-width:none;white-space:normal;text-align:center;font-size:15px}
+  .hero-sub br{display:none}
   .hero-pic{height:min(calc(100svh - var(--lt) - var(--lw)*.16 - 210px),130vw)!important}
 }
 @media (prefers-reduced-motion:reduce){.hero-logo,.hero-pic,.hero-dl,.hero-sub{animation:none}}
